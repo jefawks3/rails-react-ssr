@@ -1,0 +1,15 @@
+/.bundle/
+/.yardoc
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
+
+# RubyMine
+/.idea/
+
+# Test app
+/test/test_app/log
+/test/test_app/node_modules
