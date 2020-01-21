@@ -13,3 +13,6 @@
 # Test app
 /test/test_app/log
 /test/test_app/node_modules
+
+# Built gems
+*.gem
