@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/rails-react-ssr.svg)](https://badge.fury.io/rb/rails-react-ssr)
+
 # RailsReactSSR
 
 RailsReactSSR is a light weight JS server side rendering utility that takes advantage of `Webpacker` and `NodeJS`.
