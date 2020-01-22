@@ -5,8 +5,9 @@ RailsReactSSR is a light weight JS server side rendering utility that takes adva
 ## Motivation
 
 In my latest project I designed my application to use Rails for my API endpoints and `ReactJS` with `react-router` to 
-handle routing and handle the front end. I needed a basic tool that would not add a lot of bloat and be able to handle 
-server side rendering while allowing me to process the response (i.e. handle redirects from the router).
+handle routing and handle the front end. I needed a basic tool that would not add a lot of bloat, be able to handle 
+server side rendering while allowing me to process the response (i.e. handle redirects from the router) and did not
+force me to use any packages or make decisions for me on how to structure my ReactJS code.
 
 ## Dependencies
 
@@ -174,6 +175,19 @@ def index
 end
 
 ```
+
+## Common Issues with SSR and Rails
+
+### I'm unable to execute code with webpacker-dev-server running.
+
+The `webpacker-dev-server` injects a websocket when `inline` or `hmr` flags are set to true in for the `dev_server`
+configuration in `webpacker.yml`. Make sure these are set to **false** if you plan on implementing SSR.
+
+### `document` or `window` is not defined
+
+Global objects like `document` or `window` that are specific to browsers are not set when running the javascript on 
+the server; so it's best to wrap any code, or avoid using it outside of `componentDidMount`, `componentDidUpdate` or
+`componentWillUnmount`.
 
 ## Alternatives
 
