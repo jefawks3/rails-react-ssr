@@ -22,6 +22,11 @@ jobs:
           name: Which bundler?
           command: bundle -v
       - ruby/bundle-install
+      - run:
+          name: Parallel Minitest
+          command: bundle exec rake test
+      - store_test_results:
+          path: results
 
 test:
   override:
