@@ -35,12 +35,6 @@ const recordedLogs = [];
     def self.exec!(bundle, props: {}, outputTemp: false, max_tries: 10, delay: 1000)
       bundle_file = RailsReactSSR::WebpackerUtils.open_bundle bundle, max_tries: max_tries, delay: delay
 
-      ## Format the properties for js
-      jsProps = props.inject({}) do |hash,(k,v)|
-        hash[k.to_s.camelcase.gsub(/\A./, &:downcase)] = v
-        hash
-      end
-
       status = 0
       output = nil
 
@@ -49,7 +43,7 @@ const recordedLogs = [];
 
         begin
           write_console_polyfill js
-          write_props_polyfill js, jsProps
+          write_props_polyfill js, props
           write_bundle js, bundle_file
 
           js.flush
@@ -101,8 +95,14 @@ const recordedLogs = [];
     end
 
     def self.write_props_polyfill(temp_file, props)
+      ## Format the properties for js
+      jsProps = props.inject({}) do |hash,(k,v)|
+        hash[k.to_s.camelcase.gsub(/\A./, &:downcase)] = v
+        hash
+      end
+
       temp_file.write <<-JS
-const serverProps = #{ActiveSupport::JSON.encode props};
+const serverProps = #{ActiveSupport::JSON.encode jsProps};
 
       JS
     end
