@@ -14,6 +14,8 @@
 /test/test_app/log
 /test/test_app/node_modules
 
+Gemfile.lock
+
 # Built gems
 *.gem
 
