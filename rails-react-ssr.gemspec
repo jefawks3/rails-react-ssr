@@ -15,12 +15,11 @@ Gem::Specification.new do |spec|
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = 'https://github.com/jefawks3/rails-react-ssr'
-  spec.metadata["changelog_uri"] = 'https://github.com/jefawks3/rails-react-ssr/blob/master/CHANGELOG.md'
+  spec.metadata["changelog_uri"] = 'https://github.com/jefawks3/rails-react-ssr/releases'
 
   spec.files         = Dir[
       'lib/**/*',
       'README.md',
-      'CHANGELOG.md',
       'LICENSE',
   ]
 
@@ -28,11 +27,12 @@ Gem::Specification.new do |spec|
 
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "webpacker", "~> 4.0.2"
-  spec.add_dependency "rails", "~> 5.2.1"
+  spec.add_dependency "webpacker", ">= 4.0.2"
+  spec.add_dependency "rails", ">= 5.2.1"
 
-  spec.add_development_dependency "bundler", "~> 1.17"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "minitest", "~> 5.14"
+  spec.add_development_dependency "bundler", ">= 2.2.33"
+  spec.add_development_dependency "rake", ">= 12.3.3"
+  spec.add_development_dependency "minitest", "~> 5.15"
+  spec.add_development_dependency "minitest-ci", "~> 3.4"
   spec.add_development_dependency "byebug", "~> 11.1"
 end
